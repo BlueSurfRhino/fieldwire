@@ -6,12 +6,16 @@ describe("The Home Page", () => {
     cy.get("#password-input").type("WB22uG*Dt.3c?5Q");
     cy.get(".btn").click();
   });
-
   it("new project creation", () => {
+    cy.pause();
     cy.get(".new-project").click();
     cy.get('[name="name"]').type("Test");
     cy.get('[name="code"]').type("Test");
     cy.get('[type="submit"]').click();
+    cy.get(".modal-footer > .btn").click();
+    cy.get(".next-btn").click();
+    cy.get(".next-btn").click();
+    cy.get(".next-btn").click();
     //cy.get('[data-test-id="test-example"]')
   });
 });
