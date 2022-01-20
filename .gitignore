@@ -18,3 +18,5 @@ coverage
 dist
 test-data.json
 examples/stubbing-spying__intercept/users5.json
+cypress.json
+cypress.env.json
