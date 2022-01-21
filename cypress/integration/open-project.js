@@ -1,12 +1,8 @@
-describe("The Home Page", () => {
-  it("successful login", () => {
-    cy.visit("https://app.fieldwire.com/"); 
-    cy.get("#email-input").type("richowens@outlook.com");
-    cy.get(".btn").click();
-    cy.get("#password-input").type("WB22uG*Dt.3c?5Q");
-    cy.get(".btn").click();
-  });
-  it("new project creation - no content", () => {
+describe("new project creation", () => {
+  beforeEach(() => {
+    cy.login();
+  })
+  it("create new project with all defaults and delete it", () => {
     //create project
     cy.get(".new-project").click();
     cy.get('[name="name"]').type("Test");
@@ -26,5 +22,8 @@ describe("The Home Page", () => {
     cy.get('[ng-click="$ctrl.remove()"]').click();
     cy.get('form.ng-pristine > .form-control').type("Test");
     cy.get('[ng-disabled="!enabled()"]').click();
+    //logout
+    cy.get('.right-nav-button > .ng-binding').click();
+    cy.get('.dropdown-menu > :nth-child(5) > .pointer').click();
   });
 });
